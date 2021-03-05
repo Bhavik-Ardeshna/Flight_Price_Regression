@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home</title>
+    <meta name="description" content="Travel">
+    <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+
+<style>
+    @charset "utf-8";
+
+    body {
+        font-family: 'Raleway', sans-serif;
+        color: white;
+        background-color: #00B6B6;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* ---- HEADER ---- */
+
+    .logo {
+        color: #fff;
+        float: left;
+        margin-top: 10px;
+        font-size: 20px;
+        font-family: 'Secular One', sans-serif;
+        display: none;
+
+    }
+
+    header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 100px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* ---- NAVBAR ---- */
+
+    header nav {
+        float: left;
+    }
+
+    header nav ul.mainmenu {
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    header nav ul.mainmenu li {
+        list-style: none;
+        margin-left: -15px;
+    }
+
+    header nav ul.mainmenu li a {
+        height: 50px;
+        line-height: 50px;
+        padding: 0px 20px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        margin: 12px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: 'Hind', sans-serif;
+        display: block;
+    }
+
+    .mainmenu li a:hover {
+        color: #F8A426;
+    }
+
+    .menu-toggle {
+
+        color: #fff;
+        float: right;
+        line-height: 25px;
+        font-size: 19px;
+        cursor: pointer;
+        display: none;
+    }
+
+    /* ---- REDES SOCIALES ---- */
+
+    .socialmedia {
+        float: right;
+        margin-top: 10px;
+
+    }
+
+    .fa {
+        padding: 10px;
+        font-size: 30px;
+        width: 20px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 50%;
+    }
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+
+    /*  Pagina 1 */
+
+    .form {
+
+        display: flex;
+        flex-direction: row;
+        margin-top: 120px;
+    }
+
+
+    /*Left*/
+
+
+    .plane {
+        margin-top: 250px;
+        -webkit-filter: drop-shadow(11px 11px 11px #058989);
+        filter: drop-shadow(11px 11px 11px #058989);
+    }
+</style>
+
+<body>
+    <header>
+        <div class="logo">BOOK & TRAVEL</div>
+        <nav>
+            <ul class="mainmenu">
+                <li><a href="#">DSC DDU </a></li>
+
+            </ul>
+        </nav>
+        <div class="menu-toggle"><i class="fa fa-bars"></i> </div>
+
+        <div class="socialmedia">
+
+        </div>
+
+    </header>
+
+
+    <div class="container my-5">
+
+
+        <div id="row ">
+            <div class="form">
+                <div class="col-8">
+
+                    <img alt="plane" class="plane" height="200px" width="500px"
+                        src="https://i.ibb.co/52bG3RC/landingpage-assets-0005-plane.png">
+
+                    {% if prediction_texts  %}
+
+                    <div class="my-4">
+                        <h1><strong><em>Prediction :</em> {{"   "}}{{prediction_texts}}</strong></h1>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-4">
+                    <form action="{{ url_for('Predict')}}" method="POST">
+                        <label>
+                            <h3><strong>Airline</strong></h3>
+                        </label>
+                        <select class="form-select" name="airline" aria-label="Default select example">
+                            <option selected>Select the Airline....</option>
+                            <option value="3">Indigo</option>
+                            <option value="1">Air India</option>
+                            <option value="4">Jet Airways</option>
+                            <option value="7">SpiceJet</option>
+                            <option value="2">GoAir</option>
+                            <option value="8">Vistara</option>
+                            <option value="5">Multiple carriers</option>
+
+                        </select>
+                        <label class="mt-4">
+                            <h3><strong>Source</strong></h3>
+                        </label>
+                        <select class="form-select" name="source" aria-label="Default select example">
+                            <option selected>Select the Source of your Journey....</option>
+                            <option value="0">Banglore</option>
+                            <option value="3">Kolkata</option>
+                            <option value="1">Chennai</option>
+                            <option value="2">Delhi</option>
+                            <option value="4">Mumbai</option>
+
+
+                        </select>
+                        <label class="mt-4">
+                            <h3><strong>Destination</strong></h3>
+                        </label>
+                        <select class="form-select" name="dest" aria-label="Default select example">
+                            <option selected>Select the Destination of your Journey....</option>
+                            <option value="5">New Delhi</option>
+                            <option value="0">Banglore</option>
+                            <option value="1">Cochin</option>
+                            <option value="4">Kolkata</option>
+                            <option value="3">Hyderabad</option>
+
+                        </select>
+                        <label class="mt-4">
+                            <h3><strong>Number Of Stop</strong></h3>
+                        </label>
+                        <select class="form-select" name="stop" aria-label="Default select example">
+                            <option selected>Select the Number of Stops....</option>
+                            <option value="0">non-stop</option>
+                            <option value="1">1 stop</option>
+                            <option value="2">2 stop</option>
+                            <option value="3">3 stop</option>
+                            <option value="4">4 stop</option>
+
+                        </select>
+                        <label class="mt-4">
+                            <h3><strong>Flight Duration</strong></h3>
+                        </label>
+                        <select class="form-select" name="duration" aria-label="Default select example">
+                            <option selected>Select the Flight Duration.....</option>
+                            <option value="660">11 Hour</option>
+                            <option value="780">13 Hour</option>
+                            <option value="960">16 Hour</option>
+                            <option value="1200">20 Hour</option>
+                            <option value="1260">21 Hour</option>
+
+                        </select>
+                        <label class="mt-4">
+                            <h3><strong>Journey Day and Month</strong></h3>
+                        </label>
+                        <div class="input-group mt-2">
+                            <span class="input-group-text" id="basic-addon1">Day</span>
+                            <input type="text" class="form-control" name="day" placeholder="Journey day"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mt-4">
+                            <span class="input-group-text" id="basic-addon1">Month</span>
+                            <input type="text" class="form-control" name="month" placeholder="Journey month"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <button type="submit" class="btn btn-dark mt-3 btn-lg">Predict Price</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>
